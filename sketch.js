@@ -1,34 +1,28 @@
 var canvas;
-var x;
-var b1;
+var b1 = [];
+var count=0
 
 function setup() {
     canvas = createCanvas(windowWidth,windowHeight);
     canvas.position(0,0);
     canvas.style('z-index', '-1');
-    b1 = new Monster(250,200);
-    
-
+    for(var i = 0; i < count; i++){
+      b1[i] = new Monster(mouseX,mouseY);
+    }
 }
-function mousePressed(){
-    
-}
-
-
 function windowResized(){
-    //print('risized')
     resizeCanvas(windowWidth,windowHeight);
 }
-
+function mousePressed(){
+  b1[count] = new Monster(mouseX,mouseY);
+  count ++;
+}
 function draw() {
     background(0,200,100);
-    
-    x++;
-    var t = map(mouseX,0,100,0,windowHeight);
-    fill(0,230,100);
-    ellipse(mouseX,mouseY,40);
-    
-    b1.display();
-    b1.gravidade();
-    b1.changeDirection();
+    for (var i = 0; i < b1.length; i++) {
+      b1[i].display();
+      b1[i].gravidade();
+      b1[i].quiqui();
+    }
+
 }
