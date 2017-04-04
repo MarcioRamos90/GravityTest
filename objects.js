@@ -1,20 +1,16 @@
-function Monster(x,y){
+function Bola(x,y){
     this.x = x;
     this.y = y;
     this.r = 15;
     this.movX = 10;
     this.col = color(255,255,0);
 
-    this.gravi = 1;
-    this.posIniY = y;
     this.aceleracao = 7;
     this.aceleraQuique = 7;
-    this.absorcao = 0;
+    this.absorcao;
     this.distTotal=0;
     this.distSoma=0;
-    this.primeiraDist=0;
     this.para=0;
-
 
     this.display = function(){
         noStroke(255);
@@ -40,13 +36,11 @@ function Monster(x,y){
         this.absorcao = parseInt(this.distTotal* 0.03) ;
         this.absorcao -=this.para;
         this.aceleraQuique = this.absorcao ;
-
-        //print(this.para + " " + this.distTotal + " " + this.absorcao);
         this.aceleracao =0;
         }
     }
     this.bolaPArada = function(){
-      if(this.absorcao == 0){
+      if(this.absorcao < 1){
         return true
       }else{
         return false
